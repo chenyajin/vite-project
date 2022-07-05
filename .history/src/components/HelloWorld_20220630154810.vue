@@ -5,6 +5,10 @@
 </template>
 <script setup lang="ts">
 
+DefineOptions({
+  name: 'HelloWorld'
+})
+
 const props = defineProps(['msg'])
 
 const count = ref(0)

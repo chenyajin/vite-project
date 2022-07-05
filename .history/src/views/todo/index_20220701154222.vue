@@ -1,0 +1,69 @@
+<!--
+ * @Author: ChenYaJin
+ * @Date: 2022-06-30 17:42:39
+ * @LastEditors: ChenYaJin
+ * @LastEditTime: 2022-07-01 15:42:22
+ * @Description: 
+-->
+<template>
+  <div class="todo-wrapper">
+    <el-input v-model="keyword" @keyup.enter="onAdd"></el-input>
+    <div class="list-wrapper">
+      <p v-for="item in list">
+         <el-icon v-if="item.complete" @click="onReset(item)"><CircleCheckFilled/></el-icon>
+        <el-icon v-else @click="onComplete(item)"><CircleCheck/></el-icon>
+        <span>{{item.content}}</span>
+        <el-icon class="cursor-pointer">
+          <Delete />
+        </el-icon>
+      </p>
+    </div>
+  </div>
+</template>
+<script lang="ts" setup>
+import { ITodoItem } from "@/model/todo"
+import { todoStoreWidthOut } from "@/store/modules/todo"
+
+
+const keyword = ref<string>('')
+const todoStore = todoStoreWidthOut()
+const list = todoStore.getList
+
+const onAdd = () => {
+  if (!!keyword) {
+    const item: ITodoItem = {
+      code: new Date().getTime(),
+      content: keyword.value,
+      delete: false,
+      complete: false
+    }
+    todoStore.addTodoItem(item)
+    keyword.value = ''
+  }
+}
+const onComplete = (item: ITodoItem) => {
+  todoStore.completeTodoItem(item, true)
+}
+
+const onReset = (item: ITodoItem) => {
+  todoStore.completeTodoItem(item, false)
+}
+</script>
+<style lang="less" scoped>
+.todo-wrapper {
+  width: 400px;
+  margin: 0 auto;
+}
+.list-wrapper {
+  p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    border-bottom: 1px solid #dcdfe6;
+    &:hover {
+      background-color: #f2f6fc;
+    }
+  }
+}
+</style>
