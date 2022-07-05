@@ -2,7 +2,7 @@
  * @Author: ChenYaJin
  * @Date: 2022-06-30 17:42:39
  * @LastEditors: ChenYaJin
- * @LastEditTime: 2022-07-05 15:50:47
+ * @LastEditTime: 2022-07-05 15:48:49
  * @Description: 
 -->
 <template>
@@ -14,7 +14,7 @@
         <el-icon v-if="item.complete" @click="onComplete(item, false)"
           class="complete-color cursor-pointer"
           size="18"><CircleCheckFilled/></el-icon>
-        <el-icon v-else @click="onComplete(item, true)" class="cursor-pointer"><CircleCheck/></el-icon>
+        <el-icon v-else @click="onComplete(item, true)"><CircleCheck/></el-icon>
         <span :class="['content-width']" :title="item.content">{{item.content}}</span>
         <el-icon class="cursor-pointer" @click="onDelete(item)">
           <Delete />

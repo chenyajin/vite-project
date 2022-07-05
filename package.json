@@ -26,5 +26,14 @@
     "vite": "^2.9.9",
     "vue-tsc": "^0.34.7",
     "webpack-bundle-analyzer": "^4.5.0"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,vue, ts}": [
+      "vue-cli-service lint",
+      "git add"
+    ]
   }
 }

@@ -2,7 +2,7 @@
  * @Author: ChenYaJin
  * @Date: 2022-06-30 17:42:39
  * @LastEditors: ChenYaJin
- * @LastEditTime: 2022-07-05 15:50:47
+ * @LastEditTime: 2022-07-05 15:47:01
  * @Description: 
 -->
 <template>
@@ -14,7 +14,7 @@
         <el-icon v-if="item.complete" @click="onComplete(item, false)"
           class="complete-color cursor-pointer"
           size="18"><CircleCheckFilled/></el-icon>
-        <el-icon v-else @click="onComplete(item, true)" class="cursor-pointer"><CircleCheck/></el-icon>
+        <el-icon v-else @click="onComplete(item, true)"><CircleCheck/></el-icon>
         <span :class="['content-width']" :title="item.content">{{item.content}}</span>
         <el-icon class="cursor-pointer" @click="onDelete(item)">
           <Delete />
@@ -30,7 +30,7 @@ import { todoStoreWidthOut } from "@/store/modules/todo"
 const keyword = ref<string>('')
 const todoStore = todoStoreWidthOut()
 const list = todoStore.getList
-const inputRef =  ref<HTMLDivElement | null>(null)
+const inputRef = ref()
 
 const onAdd = () => {
   if (!!keyword) {
@@ -53,8 +53,10 @@ const onDelete = (item: ITodoItem) => {
 }
 
 onMounted(() => {
-  inputRef?.value?.focus()
-})
+  if (inputRef) {
+    inputRef.value.focus()
+  }
+}
 </script>
 <style lang="less" scoped>
 .todo-wrapper {
