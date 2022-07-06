@@ -6,7 +6,6 @@
     "moduleResolution": "node",
     "strict": true,
     "jsx": "preserve",
-    /*指定在针对React JSX emit时使用的JSX工厂函数，例如“React”。createElement'或'h'*/
     "jsxFactory": "h",
     "jsxFragmentFactory": "Fragment",
     "sourceMap": true,

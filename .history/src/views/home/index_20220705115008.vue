@@ -7,10 +7,10 @@
 -->
 <template>
   <img alt="Vue logo" src="@/assets/logo.png" />
-  <Buttons msg="Hello Vue 3 + TypeScript + Vite" />
+  <About msg="Hello Vue 3 + TypeScript + Vite" />
 </template>
 <script setup lang="ts">
-import Buttons from '@/views/buttons/index'
+import About from '@/views/about/index'
 
 defineOptions({
   name: 'Home'
